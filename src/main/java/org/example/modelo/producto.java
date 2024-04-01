@@ -8,7 +8,20 @@ public class producto {
     private Integer precio;
     private Date fechaRegistro;
 
+    @Override
+    public String toString() {
+        return  id +
+                " " +
+                nombre +
+                " " +
+                precio +
+                " " +
+                 fechaRegistro;
+
+    }
+
     public producto() {
+
     }
 
     public producto(Long id, String nombre, Integer precio, Date fechaRegistro) {

@@ -1,30 +1,20 @@
 package org.example.util;
 
+import org.example.modelo.producto;
+import org.example.repositorio.ProductoRepositorioImpl;
+import org.example.repositorio.Repositorio;
+
 import java.sql.*;
 
 public class jdbc {
     public static void main(String[] args) {
 
+        try (Connection conn = ConexionBaseDeDatos.getInstance();){
 
-        String url = "jdbc:mysql://localhost:3306/java_evidencia?serverTimezone=UTC";
-        String username = "root";
-        String password = "123456789";
+            Repositorio<producto> repositorio = new ProductoRepositorioImpl();
+            repositorio.listar().forEach(System.out::println);
 
-
-        try (Connection conn = DriverManager.getConnection(url, username, password);
-        Statement stmt = conn.createStatement();
-        ResultSet resultado = stmt.executeQuery("SELECT * FROM productos")){
-
-            while (resultado.next()){
-                System.out.print(resultado.getInt("id"));
-                System.out.print(" / ");
-                System.out.print(resultado.getString("nombre"));
-                System.out.print(" / ");
-                System.out.print(resultado.getInt("precio"));
-                System.out.print(" / ");
-                System.out.println(resultado.getDate("fecha_registro"));
-            }
-
+            System.out.println(repositorio.porId(1L));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
