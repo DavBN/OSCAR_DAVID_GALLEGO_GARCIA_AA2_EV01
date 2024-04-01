@@ -1,0 +1,1 @@
+SELECT * FROM java_evidencia.productos;
