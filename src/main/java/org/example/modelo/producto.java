@@ -2,12 +2,21 @@ package org.example.modelo;
 
 import java.util.Date;
 
-public class Producto {
+public class producto {
     private Long id;
     private String nombre;
     private Integer precio;
     private Date fechaRegistro;
 
+    public producto() {
+    }
+
+    public producto(Long id, String nombre, Integer precio, Date fechaRegistro) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.fechaRegistro = fechaRegistro;
+    }
     public Long getId() {
         return id;
     }
@@ -33,10 +42,10 @@ public class Producto {
     }
 
     public Date getFecha_registro() {
-        return fecha_registro;
+        return fechaRegistro;
     }
 
     public void setFecha_registro(Date fecha_registro) {
-        this.fecha_registro = fecha_registro;
+        this.fechaRegistro = fecha_registro;
     }
 }
